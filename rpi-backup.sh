@@ -30,8 +30,8 @@ sudo dd if=/dev/zero of=$img bs=1M count=$totalsz
 echo "...created a blank img, size ${totalsz}M "
 
 # format virtual disk
-bootstart=`sudo fdisk -l | grep $dev_boot | awk '{print $2}'`
-bootend=`sudo fdisk -l | grep $dev_boot | awk '{print $3}'`
+bootstart=`sudo fdisk -l | grep $dev_boot | awk '{print $3}'`
+bootend=`sudo fdisk -l | grep $dev_boot | awk '{print $4}'`
 rootstart=`sudo fdisk -l | grep $dev_root | awk '{print $2}'`
 echo "boot: $bootstart >>> $bootend, root: $rootstart >>> end"
 #有些系统 sudo fdisk -l 时boot分区的boot标记会标记为*,此时bootstart和bootend最后应改为 $3 和 $4
