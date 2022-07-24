@@ -15,8 +15,8 @@ img=rpi-`date +%Y%m%d-%H%M`.img
 sudo apt-get install dosfstools dump parted kpartx
 
 echo =====================   part 1, prepare workspace    ===============================
-mkdir ~/backupimg
-cd ~/backupimg
+mkdir /home/pi/usb1/backupimg
+cd /home/pi/usb1/backupimg
 
 echo ===================== part 2, create a new blank img ===============================
 # New img file
@@ -86,7 +86,7 @@ echo "...replace PARTUUID done"
 
 echo "remove auto generated files"
 #下面内容是删除树莓派中系统自动产生的文件、临时文件等
-cd ~/backupimg/tgt_Root
+cd /home/pi/usb1/backupimg/tgt_Root
 sudo rm -rf ./.gvfs ./dev/* ./media/* ./mnt/* ./proc/* ./run/* ./sys/* ./tmp/* ./lost+found/ ./restoresymtable
 cd ..
 
@@ -97,4 +97,4 @@ sudo losetup -d $loopdevice
 rmdir tgt_boot tgt_Root
 
 
-echo "==== All done. img file is under ~/backupimg/ "
+echo "==== All done. img file is under /home/pi/usb1/backupimg "
